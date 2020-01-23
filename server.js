@@ -8,13 +8,26 @@ const app = express()
 const axios = require("axios")
 
 // JUST FOR DEMO PURPOSES, PUT YOUR ACTUAL API CODE HERE
-app.get('/api/characters', (request, response) => {
-  axios.get(`https://rickandmortyapi.com/api/character`)
-  .then(characterResponse => {
-    response.json(characterResponse.data)
-  })
-  .catch(error=>console.log(error))
+app.get('/api/characters', async (request, response) => {
+  let results = await fetchCharacters('https://rickandmortyapi.com/api/character', [])
+  response.json(results)
 })
+
+fetchCharacters = async(url, results) => {
+  try {
+    let response = await axios.get(url)
+    results = [...results, ...response.data.results]
+    if(response.data.info.next) {
+      return await fetchCharacters(response.data.info.next, results)
+    }
+    else {
+      return results
+    }
+  }
+  catch(error) {
+    console.log(error)
+  }
+}
 // END DEMO
 
 if (process.env.NODE_ENV === 'production') {
