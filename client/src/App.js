@@ -1,20 +1,25 @@
 import React from 'react'
+import {BrowserRouter, Switch, Route} from "react-router-dom"
 import './App.css'
+import Navbar from './components/Navbar'
+import Home from './components/Home'
+import Search from './components/Search'
+import Character from './components/Character'
 
 class App extends React.Component {
   state = { serverMessage: '' }
 
-  componentDidMount(){
-    fetch('/api/demo')
-      .then(response => response.json())
-      .then(data => this.setState({ serverMessage: data.message }))
-  }
-
   render(){
     return (
-      <div id="demo">
-        <h1>Hello from client/src/App.js</h1>
-        <h1>{this.state.serverMessage}</h1>
+      <div id="app">
+        <BrowserRouter>
+          <Navbar />
+          <Switch>
+            <Route exact path="/" component={Home}/>
+            <Route exact path="/search" component={Search}/>
+            <Route path="/characters/:name" component={Character}/>
+          </Switch>
+        </BrowserRouter>
       </div>
     )
   }

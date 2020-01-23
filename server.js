@@ -5,12 +5,15 @@ if (process.env.NODE_ENV !== 'production') {
 const express = require("express")
 const path = require("path")
 const app = express()
+const axios = require("axios")
 
 // JUST FOR DEMO PURPOSES, PUT YOUR ACTUAL API CODE HERE
-app.get('/api/demo', (request, response) => {
-  response.json({
-    message: "Hello from server.js"
+app.get('/api/characters', (request, response) => {
+  axios.get(`https://rickandmortyapi.com/api/character`)
+  .then(characterResponse => {
+    response.json(characterResponse.data)
   })
+  .catch(error=>console.log(error))
 })
 // END DEMO
 
