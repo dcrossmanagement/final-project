@@ -1,3 +1,38 @@
-/* JUST FOR DEMO PURPORSES, REPLACE WITH YOUR OWN CODE */
+body {
+    background-color: grey;
+    text-align: center;
+}
 
-/* END DEMO */
+#navbar ul{
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin-top: 0;
+    color:white;
+    background-color: black;
+    justify-content: space-evenly;
+}
+
+a {
+    color: white;
+}
+
+#navbar li {
+    font-size: 50px;
+}
+
+#home-page img {
+    width: 1200px;
+}
+
+#search-page {
+    
+}
+
+#search-page img {
+    width: 1000px;
+}
+
+#char img {
+    width: 800px;
+}

@@ -5,7 +5,7 @@ class Character extends React.Component{
 
     render() {
         return(
-            <div>
+            <div id="char">
                 <h1>{this.state.name}</h1>
                 <img src="/images/sample.jpg" alt={this.state.name}/>
                 <div id="charInfo">
@@ -15,7 +15,7 @@ class Character extends React.Component{
                     <p>Gender:</p>
                     <p>Origin:</p>
                     <p>Location:</p>
-                </div>    
+                </div>
                 
             </div>
         )
