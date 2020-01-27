@@ -25,13 +25,37 @@ a {
     width: 1200px;
 }
 
-#search-page {
-    
-}
-
 #search-page img {
     width: 1000px;
 }
+
+#results{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 10px;
+    margin-top: 10px;
+}
+
+input{
+    width: 350px;
+    font-size: large;
+    text-align: center;
+}
+
+.result{
+    background-color: white;
+    display: grid;
+    place-items: center;
+    border-radius: 3px;
+    padding: 5px;
+    cursor: pointer;
+    transition: transform 1s;
+}
+
+.result:hover {
+    transform: scale(1.05);
+    background-color: green;
+  }
 
 #char img {
     width: 800px;
