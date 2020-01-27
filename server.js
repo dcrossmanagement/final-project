@@ -13,6 +13,18 @@ app.get('/api/characters', async (request, response) => {
   response.json(results)
 })
 
+app.get('/api/characters/:id', (request, response) => {
+  let url = `https://rickandmortyapi.com/api/character/${request.params.id}`
+  try {
+      axios.get(url).then(result => {
+      response.json(result.data)
+    })
+  }
+  catch(error) {
+    console.log(error)
+  }
+})
+
 fetchCharacters = async(url, results) => {
   try {
     let response = await axios.get(url)

@@ -1,7 +1,7 @@
 import React from "react"
 
 class Character extends React.Component{
-    state = {name: this.props.match.params.name}
+    state = {id: this.props.match.params.id}
 
     render() {
         return(
