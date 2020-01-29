@@ -1,5 +1,6 @@
 import React from "react"
 import axios from "axios"
+import {Link} from "react-router-dom"
 
 class Search extends React.Component {
     state = {
@@ -46,14 +47,15 @@ class Search extends React.Component {
                             })
                             .map((person,index) => {
                                 return(
-                                    <div className="result" key={index}>
-                                        <h4>ID# {person.id}</h4>
-                                        <h2>{person.name}</h2>
-                                        <h3>{person.origin.name}</h3>
-                                    </div>
+                                    <Link to={`/characters/${person.id}`} key={index}>
+                                        <div className="result">
+                                            <h4>ID# {person.id}</h4>
+                                            <h2>{person.name}</h2>
+                                            <h3>{person.origin.name}</h3>
+                                        </div>
+                                    </Link>
                                 )
                             })
-
                         }
                     </div>
                 </div> 

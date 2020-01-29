@@ -13,7 +13,7 @@ body {
     justify-content: space-evenly;
 }
 
-a {
+#navbar a {
     color: white;
 }
 
@@ -22,7 +22,7 @@ a {
 }
 
 #home-page img {
-    width: 1200px;
+    width: 1000px;
 }
 
 #search-page img {
@@ -36,6 +36,18 @@ a {
     margin-top: 10px;
 }
 
+#results a {
+    color: green;
+    background-color: white;
+    text-decoration: none;
+}
+
+#results a:hover {
+    transform: scale(1.05);
+    background-color: green;
+    color: white;
+}
+
 input{
     width: 350px;
     font-size: large;
@@ -44,7 +56,6 @@ input{
 }
 
 .result{
-    background-color: white;
     display: grid;
     place-items: center;
     border-radius: 3px;
@@ -52,11 +63,6 @@ input{
     cursor: pointer;
     transition: transform 1s;
 }
-
-.result:hover {
-    transform: scale(1.05);
-    background-color: green;
-  }
 
 #char img {
     width: 800px;
