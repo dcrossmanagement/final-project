@@ -1,20 +1,30 @@
 body {
     background-color: grey;
+    background: url("/images/background.png") repeat #000;
     text-align: center;
+    color: white;
+    text-shadow: 4px 4px 4px green;
+    margin: 0 400px;
+    font-family: sans-serif;
 }
 
 #navbar ul{
     display: flex;
     list-style: none;
     padding: 0;
-    margin-top: 0;
+    margin-top: 0px;
+    margin-bottom: 50px;
     color:white;
-    background-color: black;
     justify-content: space-evenly;
 }
 
 #navbar a {
     color: white;
+    text-decoration: none;
+}
+
+#navbar a:hover {
+    color: green;
 }
 
 #navbar li {
@@ -29,30 +39,33 @@ body {
     width: 1000px;
 }
 
+#char img {
+    width: 600px;
+}
+
 #results{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     grid-gap: 10px;
-    margin-top: 10px;
 }
 
 #results a {
-    color: green;
+    color: black;
     background-color: white;
     text-decoration: none;
 }
 
 #results a:hover {
     transform: scale(1.05);
-    background-color: green;
-    color: white;
+    background-color: black;
+    color: grey;
 }
 
 input{
     width: 350px;
     font-size: large;
     text-align: center;
-    margin: 10px;
+    margin: 20px;
 }
 
 .result{
@@ -62,8 +75,4 @@ input{
     padding: 5px;
     cursor: pointer;
     transition: transform 1s;
-}
-
-#char img {
-    width: 800px;
 }
