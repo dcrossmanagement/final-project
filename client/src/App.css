@@ -75,3 +75,31 @@ input{
     cursor: pointer;
     transition: transform 1s;
 }
+
+@media screen and (max-width: 600px){
+    #navbar li {
+        font-size: 25px;
+    }
+    
+    #home-page img {
+        width: 250px;
+    }
+    
+    #search-page img {
+        width: 250px;
+    }
+    
+    #char img {
+        width: 250px;
+    }
+
+    input{
+        width: 200px;
+        font-size: small;
+    }
+
+    #results {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        font-size: x-small;
+    }
+}
