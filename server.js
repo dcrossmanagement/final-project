@@ -9,7 +9,7 @@ const axios = require("axios")
 
 // JUST FOR DEMO PURPOSES, PUT YOUR ACTUAL API CODE HERE
 app.get('/api/characters', async (request, response) => {
-  let results = await fetchCharacters('https://rickandmortyapi.com/api/character', [])
+  let results = await fetchResults('https://rickandmortyapi.com/api/character', [])
   response.json(results)
 })
 
@@ -25,12 +25,17 @@ app.get('/api/characters/:id', (request, response) => {
   }
 })
 
-fetchCharacters = async(url, results) => {
+app.get('/api/locations', async (request, response) => {
+  let results = await fetchResults('https://rickandmortyapi.com/api/location/', [])
+  response.json(results)
+})
+
+fetchResults = async(url, results) => {
   try {
     let response = await axios.get(url)
     results = [...results, ...response.data.results]
     if(response.data.info.next) {
-      return await fetchCharacters(response.data.info.next, results)
+      return await fetchResults(response.data.info.next, results)
     }
     else {
       return results
