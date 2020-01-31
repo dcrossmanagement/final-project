@@ -34,7 +34,7 @@ body {
     width: 1000px;
 }
 
-#search-page img {
+.search-page img {
     width: 1000px;
 }
 
@@ -85,7 +85,7 @@ input{
         width: 250px;
     }
     
-    #search-page img {
+    .search-page img {
         width: 250px;
     }
     
