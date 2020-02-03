@@ -7,7 +7,6 @@ const path = require("path")
 const app = express()
 const axios = require("axios")
 
-// JUST FOR DEMO PURPOSES, PUT YOUR ACTUAL API CODE HERE
 app.get('/api/characters', async (request, response) => {
   let results = await fetchResults('https://rickandmortyapi.com/api/character', [])
   response.json(results)
