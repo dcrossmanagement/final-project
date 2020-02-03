@@ -30,8 +30,12 @@ body {
     font-size: 50px;
 }
 
+#home-page {
+    margin: 0 30%;
+}
+
 #home-page img {
-    width: 1000px;
+    width: 100%;
 }
 
 .search-page img {
@@ -80,9 +84,9 @@ input{
     #navbar li {
         font-size: 25px;
     }
-    
-    #home-page img {
-        width: 250px;
+
+    #home-page {
+        font-size: x-small;
     }
     
     .search-page img {
