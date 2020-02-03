@@ -7,7 +7,8 @@ class LocationSearch extends React.Component{
     state = {
         locations: [],
         query: "-",
-        loading: true
+        loading: true,
+        residents: []
     }
 
     componentDidMount() {
@@ -25,12 +26,28 @@ class LocationSearch extends React.Component{
         })
     }
 
-    handleChange = event => {
-        this.setState({query: event.target.value})
+    fetchResidents = async (query) => {
+        let residentURLs = this.state.locations[query].residents
+        let resID = residentURLs.map((resident, index) => {
+            return (
+                resident.split("/").pop()
+            )
+        })
+        let residents = await Promise.all(resID.map(async (id, index) => {
+            return (await axios.get(`/api/characters/${id}`)).data
+        }))
+        return residents
+    }
+
+    handleChange = async (event) => {
+        let query = event.target.value
+        let residents = await this.fetchResidents(query)
+        this.setState({query, residents})
     }
 
     render() {
-        const {locations, query, loading} = this.state
+        const {locations, query, residents, loading} = this.state
+        const location = locations[query]
         return(
             <div className="search-page">
                 <h1>Search Locations Below</h1>
@@ -48,7 +65,21 @@ class LocationSearch extends React.Component{
                 </select>
                 {
                     query !== "-" && 
-                    <Location location={locations[query]}/>
+                    <div id="location-info">
+                        <h1>Name: {location.name}</h1>
+                        <h2>Type: {location.type}</h2>
+                        <h2>Dimension: {location.dimension}</h2>
+                        <h2>Residents: </h2>
+                        <div>
+                            {
+                                residents.map((resident,index) => {
+                                    return(
+                                        <p key={index}>{resident.name}</p>
+                                    )
+                                })
+                            }
+                        </div>
+                    </div>
                 }
                 
             </div>
