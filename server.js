@@ -29,6 +29,11 @@ app.get('/api/locations', async (request, response) => {
   response.json(results)
 })
 
+app.get('/api/episodes', async (reuqest, response) => {
+  let results = await fetchResults('https://rickandmortyapi.com/api/episode/', [])
+  response.json(results)
+})
+
 fetchResults = async(url, results) => {
   try {
     let response = await axios.get(url)

@@ -6,6 +6,7 @@ import Home from './components/Home'
 import CharacterSearch from './components/CharacterSearch'
 import Character from './components/Character'
 import LocationSearch from './components/LocationSearch'
+import EpisodeSearch from './components/EpisodeSearch'
 
 class App extends React.Component {
   state = { serverMessage: '' }
@@ -20,6 +21,7 @@ class App extends React.Component {
             <Route exact path="/characters" component={CharacterSearch}/>
             <Route path="/characters/:id" component={Character}/>
             <Route exact path="/locations" component={LocationSearch}/>
+            <Route exact path="/episodes" component={EpisodeSearch}/>
           </Switch>
         </BrowserRouter>
       </div>
