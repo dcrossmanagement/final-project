@@ -1,5 +1,6 @@
 import React from "react"
 import axios from "axios"
+import {Link} from "react-router-dom"
 
 class EpisodeSearch extends React.Component {
     state = {
@@ -64,7 +65,9 @@ class EpisodeSearch extends React.Component {
                             {
                                 characters.map((character, index) => {
                                     return(
-                                        <p key={index}>{character.name}</p>
+                                        <Link to={`/characters/${character.id}`} key={index}>
+                                            <p>{character.name}</p>
+                                        </Link>
                                     )
                                 })
                             }

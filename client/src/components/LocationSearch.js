@@ -1,5 +1,6 @@
 import React from "react"
 import axios from "axios"
+import {Link} from "react-router-dom"
 
 class LocationSearch extends React.Component{
     state = {
@@ -72,7 +73,9 @@ class LocationSearch extends React.Component{
                             {
                                 residents.map((resident,index) => {
                                     return(
-                                        <p key={index}>{resident.name}</p>
+                                        <Link to={`/characters/${resident.id}`} key={index}>
+                                            <p>{resident.name}</p>
+                                        </Link>
                                     )
                                 })
                             }
