@@ -1,12 +1,11 @@
 import React from "react"
 import axios from "axios"
-import {Link} from "react-router-dom"
+import LocationResults from "./LocationResults"
 
 class LocationSearch extends React.Component{
     state = {
         locations: [],
         query: "-",
-        loading: true,
         residents: []
     }
 
@@ -27,12 +26,12 @@ class LocationSearch extends React.Component{
 
     fetchResidents = async (query) => {
         let residentURLs = this.state.locations[query].residents
-        let resID = residentURLs.map((resident, index) => {
+        let resID = residentURLs.map((resident) => {
             return (
                 resident.split("/").pop()
             )
         })
-        let residents = await Promise.all(resID.map(async (id, index) => {
+        let residents = await Promise.all(resID.map(async (id) => {
             return (await axios.get(`/api/characters/${id}`)).data
         }))
         return residents
@@ -45,7 +44,7 @@ class LocationSearch extends React.Component{
     }
 
     render() {
-        const {locations, query, residents, loading} = this.state
+        const {locations, query, residents} = this.state
         const location = locations[query]
         return(
             <div className="search-page">
@@ -63,26 +62,9 @@ class LocationSearch extends React.Component{
                     }
                 </select>
                 {
-                    query !== "-" && 
-                    <div id="location-info">
-                        <h1>Name: {location.name}</h1>
-                        <h2>Type: {location.type}</h2>
-                        <h2>Dimension: {location.dimension}</h2>
-                        <h2>Residents: </h2>
-                        <div>
-                            {
-                                residents.map((resident,index) => {
-                                    return(
-                                        <Link to={`/characters/${resident.id}`} key={index}>
-                                            <p>{resident.name}</p>
-                                        </Link>
-                                    )
-                                })
-                            }
-                        </div>
-                    </div>
+                    query !== "-" &&
+                    <LocationResults location={location} residents={residents}/>
                 }
-                
             </div>
         )
     }

@@ -1,6 +1,6 @@
 import React from "react"
 import axios from "axios"
-import {Link} from "react-router-dom"
+import EpisodeResults from "./EpisodeResults"
 
 class EpisodeSearch extends React.Component {
     state = {
@@ -20,12 +20,12 @@ class EpisodeSearch extends React.Component {
 
     fetchCharacters = async (query) => {
         let characterURLs = this.state.episodes[query].characters
-        let charID = characterURLs.map((character, index) => {
+        let charID = characterURLs.map((character) => {
             return (
                 character.split("/").pop()
             )  
         })
-        let characters = await Promise.all(charID.map(async (id, index) => {
+        let characters = await Promise.all(charID.map(async (id) => {
             return (await axios.get(`/api/characters/${id}`)).data
         }))
         return characters
@@ -57,22 +57,7 @@ class EpisodeSearch extends React.Component {
                 </select>
                 {
                     query !== "-" &&
-                    <div id="episode-info">
-                        <h1>Name: {episode.name}</h1>
-                        <h2>Air Date: {episode.air_date}</h2>
-                        <h2>Characters: </h2>
-                        <div>
-                            {
-                                characters.map((character, index) => {
-                                    return(
-                                        <Link to={`/characters/${character.id}`} key={index}>
-                                            <p>{character.name}</p>
-                                        </Link>
-                                    )
-                                })
-                            }
-                        </div>
-                    </div>    
+                    <EpisodeResults episode={episode} characters={characters}/>
                 }
             </div>
         )
