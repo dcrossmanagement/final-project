@@ -22,7 +22,9 @@ class CharacterSearch extends React.Component {
         const {characters, query, loading} = this.state
         return(
             <div className="search-page">
-                <h1>Search Character Below</h1>
+                <h1>Banana Bears Trading Club</h1>
+                <h2>The Banana Bears Trading Club is the go to spot for chart maxis and technical trading enthousiasts.</h2>
+                <h2>Our aim is for Bears to have a place to educate themselves on financial markets while enjoying each others' company.</h2>
                 <img src="/images/characters.jpg" alt="various characters"/>
                 <br></br>
                 <input 
