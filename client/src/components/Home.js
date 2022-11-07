@@ -5,9 +5,8 @@ class Home extends React.Component {
         return (
             <div id="home-page">
                 <h1>Banana Bears Trading Club</h1>
-                <h2>Welcome to the webpage for the market monitor dashboards!</h2>
-                <img src="/images/sample.jpg" alt="landing page img"/>
-                <h3>Find subsequent instructions here!</h3>
+                <h2>Please click the 'About' tab to learn more!</h2>
+                <img src="/images/a1i3n.png" alt="landing page img"/>
             </div>
         )
     }

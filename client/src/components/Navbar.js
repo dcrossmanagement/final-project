@@ -6,9 +6,9 @@ const Navbar = () => {
         <div id="navbar">
             <ul>
                 <li><Link to="/">Home</Link></li>
-                <li><Link to="/characters">Characters</Link></li>
-                <li><Link to="/locations">Locations</Link></li>
-                <li><Link to="/episodes">Episodes</Link></li>
+                <li><Link to="/characters">About</Link></li>
+                <li><Link to="/locations">CFTC COT Data</Link></li>
+                <li><Link to="/episodes">Market Monitor</Link></li>
             </ul>
         </div>
     )
